@@ -178,6 +178,11 @@ class MessagePayload {
       }
     }
 
+    if (typeof this.options.embed === 'object') {
+        if (this.options.embeds?.length) this.options.embeds.push(this.options.embed);
+        else this.options.embeds = [ this.options.embed ];
+    }
+
     const attachments = this.options.files?.map((file, index) => ({
       id: index.toString(),
       description: file.description,
